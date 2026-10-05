@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>2026 Halloween CashApp Reward</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+:root {
+  --green:#00d632;
+  --border:#2a2050;
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;
+}
+html { background:#080612; }
+body {
+  color:#fff;
+  min-height:100vh;
+  max-width:430px;
+  margin:0 auto;
+  overflow-x:hidden;
+  padding-bottom:calc(110px + env(safe-area-inset-bottom,0px));
+  background:
+    radial-gradient(ellipse 80% 40% at 20% 10%, rgba(80,40,180,.45) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 0%, rgba(0,180,80,.2) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 60% at 50% 90%, rgba(120,30,160,.3) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 90% 60%, rgba(0,120,220,.18) 0%, transparent 60%),
+    linear-gradient(160deg,#0e0820 0%,#080612 40%,#080f14 100%);
+}
+#reco-tpl{display:none;}
+
+/* TICKER */
+.ticker {
+  background:rgba(18,16,28,.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  padding:13px 16px;
+  font-size:14px;
+  display:flex; align-items:center; gap:6px;
+}
+.ticker .amt{color:var(--green);font-weight:700;}
+
+/* HERO */
+.hero {
+  margin:14px 12px 0;
+  background:linear-gradient(150deg,rgba(40,20,100,.7) 0%,rgba(14,11,30,.8) 55%,rgba(10,22,18,.7) 100%);
+  backdrop-filter:blur(20px);
+  border-radius:22px;
+  border:1px solid rgba(120,80,255,.25);
+  padding:26px 18px 24px;
+  text-align:center;
+  box-shadow:0 0 60px rgba(80,40,200,.15), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.hero-icons{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:18px;}
+.cashapp-logo {
+  width:62px;height:62px;
+  background:linear-gradient(135deg,#00e83a,#00b828);
+  border-radius:15px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:30px;font-weight:900;color:#fff;
+  box-shadow:0 4px 24px rgba(0,214,50,.35);
+  flex-shrink:0;
+}
+.plus-sep{font-size:22px;color:rgba(255,255,255,.3);font-weight:300;}
+.reco-icon-hero{width:62px;height:62px;min-width:62px;border-radius:15px;overflow:hidden;box-shadow:0 4px 24px rgba(130,80,220,.35);flex-shrink:0;}
+.pill {
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(0,214,50,.08);
+  border:1px solid rgba(0,214,50,.25);
+  border-radius:100px;
+  padding:7px 16px;
+  font-size:13px;font-weight:600;color:var(--green);
+  margin-bottom:18px;
+}
+.dot{width:7px;height:7px;background:var(--green);border-radius:50%;flex-shrink:0;animation:blink 1.4s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.credit-label{font-size:11px;letter-spacing:2px;color:#555;text-transform:uppercase;margin-bottom:5px;}
+.amount {
+  font-size:80px;font-weight:800;line-height:1;
+  background:linear-gradient(135deg,#fff 50%,#a0ffc8 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:10px;
+}
+.free-label{font-size:15px;color:#bbb;margin-bottom:16px;}
+.claiming-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(0,214,50,.08);border:1px solid rgba(0,214,50,.2);border-radius:100px;padding:7px 16px;font-size:13px;color:#ccc;}
+
+/* STATS */
+.stats {
+  margin:10px 12px 0;
+  background:rgba(22,18,32,.75);
+  backdrop-filter:blur(16px);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.07);
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  overflow:hidden;
+}
+.stat{padding:16px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.06);}
+.stat:last-child{border-right:none;}
+.stat-val{font-size:17px;font-weight:800;display:block;margin-bottom:3px;}
+.stat-val.g{color:var(--green);}
+.stat-key{font-size:9px;letter-spacing:1.2px;color:#555;text-transform:uppercase;}
+
+/* HOW TO */
+.howto {
+  margin:10px 12px 0;
+  background:rgba(22,18,32,.75);
+  backdrop-filter:blur(16px);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.07);
+  padding:18px 14px;
+}
+.howto-title{font-size:11px;letter-spacing:2px;color:#555;text-transform:uppercase;margin-bottom:14px;}
+.step-row{display:flex;align-items:flex-start;gap:13px;margin-bottom:13px;}
+.step-num-box{width:28px;height:28px;min-width:28px;background:rgba(0,214,50,.13);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--green);}
+.step-text{font-size:14px;color:#bbb;line-height:1.45;padding-top:4px;}
+.reco-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px 12px;display:flex;align-items:center;gap:12px;margin-bottom:13px;cursor:pointer;}
+.reco-icon-wrap{width:42px;height:42px;min-width:42px;border-radius:11px;overflow:hidden;flex-shrink:0;}
+.reco-info{flex:1;}
+.reco-name{font-size:15px;font-weight:700;margin-bottom:5px;}
+.reco-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(0,214,50,.13);border-radius:100px;padding:3px 10px;font-size:11px;font-weight:700;color:var(--green);}
+.step-num-right{width:28px;height:28px;min-width:28px;background:rgba(0,214,50,.13);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--green);}
+
+/* STICKY CTA */
+.sticky-cta {
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+  width:100%;max-width:430px;
+  background:linear-gradient(to top,rgba(8,6,18,.98) 65%,transparent 100%);
+  padding:14px 14px calc(14px + env(safe-area-inset-bottom,0px));
+  z-index:100;
+}
+.limited-row{display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;color:#555;margin-bottom:10px;}
+.limited-row::before{content:'';width:7px;height:7px;background:var(--green);border-radius:50%;animation:blink 1.4s infinite;}
+/* openModalBtn = butonul principal */
+#openModalBtn {
+  display:block;width:100%;
+  background:linear-gradient(135deg,#33cc55,#00b828);
+  color:#fff;font-size:18px;font-weight:800;
+  padding:20px;border-radius:16px;border:none;cursor:pointer;
+  box-shadow:0 8px 32px rgba(0,200,50,.4);
+  letter-spacing:.3px;-webkit-appearance:none;
+}
+#openModalBtn:active{filter:brightness(.88);}
+.no-cc{margin-top:10px;font-size:13px;color:#555;text-align:center;}
+.no-cc strong{color:var(--green);}
+
+/* MODAL — id=modalOverlay */
+#modalOverlay {
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.88);
+  z-index:999;
+  align-items:flex-end;justify-content:center;
+}
+#modalOverlay.open{display:flex;}
+.modal {
+  background:linear-gradient(160deg,#1c1240 0%,#0e0b1e 70%,#0c1610 100%);
+  border:1px solid #2a2050;
+  border-radius:24px 24px 0 0;
+  padding:32px 20px calc(32px + env(safe-area-inset-bottom,0px));
+  width:100%;max-width:430px;
+  text-align:center;position:relative;
+  animation:slideup .25s ease;
+}
+@keyframes slideup{from{transform:translateY(60px);opacity:0}to{transform:translateY(0);opacity:1}}
+/* modalClose = butonul X */
+#modalClose {
+  position:absolute;top:16px;right:16px;
+  width:30px;height:30px;
+  background:rgba(255,255,255,.1);
+  border:none;border-radius:50%;
+  color:#aaa;font-size:14px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.modal-reco-wrap{width:72px;height:72px;border-radius:50%;overflow:hidden;margin:0 auto 16px;box-shadow:0 0 0 3px rgba(130,100,220,.4),0 0 0 7px rgba(130,100,220,.1);}
+.modal-step-lbl{font-size:11px;letter-spacing:2px;color:var(--green);font-weight:700;text-transform:uppercase;margin-bottom:10px;}
+.modal h2{font-size:24px;font-weight:800;margin-bottom:13px;line-height:1.2;}
+.modal h2 span{color:var(--green);}
+.modal-desc{font-size:14px;color:#888;line-height:1.65;margin-bottom:20px;}
+.modal-desc strong{color:#fff;}
+.modal-step-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:15px 13px;display:flex;align-items:flex-start;gap:12px;text-align:left;margin-bottom:20px;}
+.m-step-num{width:28px;height:28px;min-width:28px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;}
+.m-step-body strong{display:block;font-size:15px;font-weight:700;margin-bottom:4px;}
+.m-step-body span{font-size:13px;color:#666;}
+/* continueBtn = butonul Play Reco */
+#continueBtn {
+  display:block;width:100%;
+  background:linear-gradient(135deg,#33cc55,#00b828);
+  color:#fff;font-size:17px;font-weight:800;
+  padding:18px;border-radius:14px;border:none;cursor:pointer;
+  box-shadow:0 6px 22px rgba(0,200,50,.28);
+  margin-bottom:16px;-webkit-appearance:none;
+}
+#continueBtn:active{filter:brightness(.9);}
+.modal-skip{background:none;border:none;color:#666;font-size:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+</style>
+</head>
+<body>
+
+<svg id="reco-tpl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="display:none">
+  <defs>
+    <linearGradient id="rg0" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#4f8ef7"/>
+      <stop offset="35%"  stop-color="#8b5cf6"/>
+      <stop offset="75%"  stop-color="#e879a0"/>
+      <stop offset="100%" stop-color="#f9c06a"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" fill="url(#rg0)"/>
+  <path d="M28 18 h44 a5 5 0 0 1 5 5 v55 l-27-15 -27 15 V23 a5 5 0 0 1 5-5z" fill="white"/>
+  <path d="M50 56 c-1 0 -16-10 -16-21 a10 10 0 0 1 16-7.2 a10 10 0 0 1 16 7.2 c0 11 -15 21 -16 21z" fill="url(#rg0)"/>
+</svg>
+
+<div class="ticker">
+  🇺🇸 <strong>Ava K.</strong>&nbsp;just claimed&nbsp;<span class="amt">$750.00</span>&nbsp;— sent instantly
+</div>
+
+<div class="hero">
+  <div class="hero-icons">
+    <div class="cashapp-logo">$</div>
+    <span class="plus-sep">+</span>
+    <div class="reco-icon-hero" id="reco-hero"></div>
+  </div>
+  <div class="pill"><span class="dot"></span>2026 Halloween CashApp Reward</div>
+  <div class="credit-label">CashApp Credit</div>
+  <div class="amount">$750</div>
+  <div class="free-label">Free Credit to Spend in CashApp</div>
+  <div class="claiming-pill">
+    <span class="dot"></span>
+    <strong id="cnt">1,291</strong>&nbsp;people claiming right now
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><span class="stat-val">12,847</span><span class="stat-key">Redeemed</span></div>
+  <div class="stat"><span class="stat-val g">2 min ago</span><span class="stat-key">Last Claimed</span></div>
+  <div class="stat"><span class="stat-val">&lt;5 min</span><span class="stat-key">Avg. Time</span></div>
+</div>
+
+<div class="howto">
+  <div class="howto-title">How to Claim Your $750</div>
+  <div class="step-row">
+    <div class="step-num-box">1</div>
+    <div class="step-text">Tap the button below to reserve your $750 spot</div>
+  </div>
+  <!-- offer-card class pentru click handler din script -->
+  <div class="reco-card offer-card">
+    <div class="reco-icon-wrap" id="reco-small"></div>
+    <div class="reco-info">
+      <div class="reco-name">Download &amp; Play Reco</div>
+      <div class="reco-badge">★ Quick Unlock Step</div>
+    </div>
+    <div class="step-num-right">2</div>
+  </div>
+  <div class="step-row">
+    <div class="step-num-box">3</div>
+    <div class="step-text">Return here to unlock your $750 CashApp offer</div>
+  </div>
+  <div class="step-row" style="margin-bottom:0">
+    <div class="step-num-box">4</div>
+    <div class="step-text">Receive your $750 CashApp balance</div>
+  </div>
+</div>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta">
+  <div class="limited-row">Limited spots remaining</div>
+  <button id="openModalBtn">CLAIM MY $750 →</button>
+  <p class="no-cc"><strong>No credit card needed.</strong> Takes under 5 minutes.</p>
+</div>
+
+<!-- MODAL — id=modalOverlay -->
+<div id="modalOverlay">
+  <div class="modal">
+    <button id="modalClose">✕</button>
+    <div class="modal-reco-wrap" id="reco-modal"></div>
+    <div class="modal-step-lbl">Step 1 Required</div>
+    <h2>Download &amp; Play <span>Reco</span></h2>
+    <p class="modal-desc">
+      Get the <strong>Reco</strong> app and play 1 quick game to qualify.
+      Once finished, <strong>come right back here</strong> to claim your $750 CashApp credit!
+    </p>
+    <div class="modal-step-card">
+      <div class="m-step-num">1</div>
+      <div class="m-step-body">
+        <strong>Play 1 Game on Reco First</strong>
+        <span>Required to unlock Step 2 and claim your $750 reward</span>
+      </div>
+    </div>
+    <button id="continueBtn">Play Reco &amp; Unlock →</button>
+    <button class="modal-skip" id="modalClose2">I played Reco, continue to CashApp offer</button>
+  </div>
+</div>
+
+<!-- iconite SVG clone -->
+<script>
+function cloneIcon(targetId) {
+  var tpl = document.getElementById('reco-tpl');
+  var svg = tpl.cloneNode(true);
+  svg.removeAttribute('id');
+  svg.removeAttribute('style');
+  svg.style.width = '100%';
+  svg.style.height = '100%';
+  var uid = 'rg_' + targetId;
+  svg.innerHTML = svg.innerHTML
+    .replace(/id="rg0"/g, 'id="' + uid + '"')
+    .replace(/url\(#rg0\)/g, 'url(#' + uid + ')');
+  document.getElementById(targetId).appendChild(svg);
+}
+cloneIcon('reco-hero');
+cloneIcon('reco-small');
+cloneIcon('reco-modal');
+
+// counter live
+var n = 1291;
+setInterval(function(){
+  n += Math.floor(Math.random()*5) - 2;
+  n = Math.max(1240, Math.min(1380, n));
+  document.getElementById('cnt').textContent = n.toLocaleString();
+}, 2800);
+
+// close skip button (nu e in scriptul original)
+document.getElementById('modalClose2').addEventListener('click', function(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+});
+</script>
+
+<!-- SCRIPTUL TAU — exact, neatins -->
+<script>
+(function(){
+  var baseUrl = 'https://taprkr.com/r/eyJ0IjoicmVjb3NvY2lhbC1jcHIiLCJ0aWQiOiJjNmJmOTBlOTkwYmQyYjdhNTRlNSIsInRzIjoxNzkxMjE1ODI3NDUyfQ?s1=test&feb=1';
+  var redirectUrl = new URL(baseUrl);
+
+  var urlParams = new URLSearchParams(window.location.search);
+  var s1Value = urlParams.get('s1');
+
+  if (s1Value) {
+    redirectUrl.searchParams.set('s1', s1Value);
+  }
+
+  redirectUrl.searchParams.set('feb', '1');
+
+  var AFFILIATE_URL = redirectUrl.toString();
+
+  var timerEl = document.getElementById('timer');
+  var seconds = 20 * 60;
+  var modalOverlay = document.getElementById('modalOverlay');
+  var openModalBtn = document.getElementById('openModalBtn');
+  var modalClose = document.getElementById('modalClose');
+  var continueBtn = document.getElementById('continueBtn');
+  var offerCards = document.querySelectorAll('.offer-card');
+
+  function renderTimer(){
+    var m = String(Math.floor(seconds/60)).padStart(2,'0');
+    var s = String(seconds%60).padStart(2,'0');
+    if(timerEl) timerEl.textContent = m + ':' + s;
+  }
+  renderTimer();
+  setInterval(function(){ if(seconds>0){ seconds--; renderTimer(); } }, 1000);
+
+  function openModal(){ modalOverlay.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeModal(){ modalOverlay.classList.remove('open'); document.body.style.overflow=''; }
+
+  openModalBtn.addEventListener('click', openModal);
+  modalClose.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', function(e){ if(e.target===modalOverlay) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
+  continueBtn.addEventListener('click', function(){ window.location.href = AFFILIATE_URL; });
+  offerCards.forEach(function(card){ card.addEventListener('click', openModal); });
+})();
+</script>
+
+</body>
+</html>
